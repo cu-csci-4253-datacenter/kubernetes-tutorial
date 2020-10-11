@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: busybox4
+  labels:
+    app: busybox
+    purpose: demonstrate-command
+spec:
+  containers:
+  - name: busybox
+    image: busybox
+#
+# See https://yaml-multiline.info/ for syntax
+    args:
+      - /bin/sh
+      - -c
+      - |
+        while true;
+        do
+          echo "$(date)\n" >> /tmp/example.log;
+          sleep 1;
+        done
+  restartPolicy: OnFailure

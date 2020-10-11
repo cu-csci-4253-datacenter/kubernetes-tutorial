@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: busybox3
+  labels:
+    app: busybox
+spec:
+  containers:
+  - name: busybox
+    image: busybox
+    command:
+      - /bin/sh
+    args: [-c, 'while true; do echo $(date); sleep 1; done']
+    imagePullPolicy: IfNotPresent
+  restartPolicy: Always
