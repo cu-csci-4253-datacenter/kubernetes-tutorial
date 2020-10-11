@@ -10,6 +10,7 @@ spec:
   - name: busybox
     image: busybox
 #
+# You can also specify args using the multiline yaml syntax (| and >) 
 # See https://yaml-multiline.info/ for syntax
     args:
       - /bin/sh

@@ -6,11 +6,19 @@ metadata:
     app: busybox
     purpose: demonstrate-command
 spec:
+  #
+  # In this example, we are going to create an "empty" volume
+  # called varlog and then mount it on the two containers in the
+  # pod. This will create a "shared" file area for the two, allowing
+  # the log file to be writte by one and consumed by the other
+  #
+  volumes:
+    - name: varlog
+      emptyDir: {}
+  restartPolicy: OnFailure
   containers:
   - name: busybox
     image: busybox
-#
-# See https://yaml-multiline.info/ for syntax
     args:
       - /bin/sh
       - -c
@@ -29,8 +37,3 @@ spec:
     volumeMounts:
       - name: varlog
         mountPath: /var/log
-  volumes:
-    - name: varlog
-      emptyDir: {}
-          
-  restartPolicy: OnFailure

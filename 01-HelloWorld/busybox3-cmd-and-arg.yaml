@@ -8,6 +8,9 @@ spec:
   containers:
   - name: busybox
     image: busybox
+    #
+    # You can use a combination of these
+    #
     command:
       - /bin/sh
     args: [-c, 'while true; do echo $(date); sleep 1; done']

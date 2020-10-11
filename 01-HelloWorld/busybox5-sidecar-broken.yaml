@@ -6,11 +6,20 @@ metadata:
     app: busybox
     purpose: demonstrate-command
 spec:
+  #
+  # We're going to create two containers in a single pod.
+  # The one container writes to /tmp and the other attempt
+  # to read from it.
+  #
+  # However, each container is isolated and has their own
+  # file system (including /tmp). Thus, the second container
+  # doesn't see the logs from the first.
+  #
+  # This example demonstrates the problem, the next the solution.
+  #
   containers:
   - name: busybox
     image: busybox
-#
-# See https://yaml-multiline.info/ for syntax
     args:
       - /bin/sh
       - -c

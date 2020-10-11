@@ -8,6 +8,10 @@ spec:
   containers:
   - name: busybox
     image: busybox
+    #
+    # In this case we're using a single command and no args.
+    # the command is in alternate YAML list notation
+    #
     command: [/bin/sh, -c, 'while true; do echo $(date); sleep 1; done']
     imagePullPolicy: IfNotPresent
   restartPolicy: Always
