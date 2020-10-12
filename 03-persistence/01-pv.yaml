@@ -1,6 +1,8 @@
 #
 # See https://kubernetes.io/docs/concepts/storage/persistent-volumes/
 #
+# A walk through of persistent volumes is at https://kubernetes.io/docs/tasks/configure-pod-container/configure-persistent-volume-storage/
+#
 apiVersion: v1
 kind: PersistentVolume
 metadata:
