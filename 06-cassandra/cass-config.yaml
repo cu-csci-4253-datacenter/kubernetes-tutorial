@@ -1,0 +1,8 @@
+replicaCount: 1
+
+persistence:
+   size: 2Gi
+
+dbUser:
+   user: cassandra
+   password: changeme
