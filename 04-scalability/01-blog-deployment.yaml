@@ -6,7 +6,7 @@ kind: Deployment
 metadata:
   name: blog-deployment
 spec:
-  replicas: 3
+  replicas: 1
   # The .spec.selector field defines how the Deployment finds which Pods to manage.
   # In this case, you simply select a label that is defined in the Pod template (app: blog).
   # However, more sophisticated selection rules are possible,

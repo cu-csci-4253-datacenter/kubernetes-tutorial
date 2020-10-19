@@ -7,6 +7,7 @@ metadata:
   name: busybox1
   labels:
     app: busybox
+    foo : bar
 spec:
   #
   # The specification is a list of attributes, one of which
