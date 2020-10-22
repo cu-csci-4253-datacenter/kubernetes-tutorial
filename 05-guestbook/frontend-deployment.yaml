@@ -7,7 +7,7 @@ spec:
     matchLabels:
       app: guestbook
       tier: frontend
-  replicas: 1
+  replicas: 3
   template:
     metadata:
       labels:
@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: php-redis
-        image: gcr.io/google-samples/gb-frontend:v4
+        image: dirkcgrunwald/python-redis:v1
         resources:
           requests:
             cpu: 100m
@@ -24,11 +24,15 @@ spec:
         env:
         - name: GET_HOSTS_FROM
           value: dns
+        - name: REDIS_MASTER_SERVICE_HOST
+          value: redis-master
+        - name: REDIS_SLAVE_SERVICE_HOST
+          value: redis-slave
           # If your cluster config does not include a dns service, then to
           # instead access environment variables to find service host
           # info, comment out the 'value: dns' line above, and uncomment the
           # line below:
           # value: env
         ports:
-        - containerPort: 80
+        - containerPort: 5000
 ---

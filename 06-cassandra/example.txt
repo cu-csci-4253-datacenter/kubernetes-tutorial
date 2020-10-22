@@ -1,0 +1,4 @@
+CREATE KEYSPACE demodb WITH REPLICATION = { ‘class’ : ‘NetworkTopologyStrategy’, ‘datacenter1’ : 1 };
+USE demodb;
+CREATE TABLE thing ( lat real, lon real, feature varchar, PRIMARY KEY (feature));
+INSERT into thing (lat, lon, feature) VALUES (48.0, -135, "house"));
