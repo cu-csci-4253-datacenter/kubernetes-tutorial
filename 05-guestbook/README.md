@@ -20,3 +20,4 @@ The Python application is built using the Dockerfile in the `python-redis` direc
 
 In order to use the Ingress, you need to install an ingress [using the directions at this site](https://kubernetes.github.io/ingress-nginx/deploy/#docker-for-mac). The same directions hold for "docker on mac" if you are using Docker on Windows/WSL2.
 
+Once the ingress has been installed, you should be able to visit the sample application by going to `http://localhost` -- you'll be using one of multiple web front-ends to edit the blog.
