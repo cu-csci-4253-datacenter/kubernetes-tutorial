@@ -4,7 +4,7 @@ metadata:
   #
   # This is the name that will appear in kubectl get po
   #
-  name: flask
+  name: blog-no-env
   labels:
     app: blog
 spec:

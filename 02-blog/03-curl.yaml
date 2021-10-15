@@ -20,16 +20,13 @@ spec:
     # of this image in case we've changed it
     #
     imagePullPolicy: Always
-    env:
-      - name: FLASK_PORT
-        value: "8888"
     args:
       - /bin/sh
       - -c
       - |
         while true;
         do
-          curl http://flask:8888
+          curl http://flask-svc:9999
           sleep 5;
         done
 
