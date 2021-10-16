@@ -1,12 +1,14 @@
 #
 # See https://kubernetes.io/docs/concepts/services-networking/ingress/
 #
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: frontend-ingress
+  name: guestbook-ingress
+  namespace: default
   annotations:
-    ingress.kubernetes.io/rewrite-target: /$1
+    # use the shared ingress-nginx
+    kubernetes.io/ingress.class: "nginx"
 spec:
   rules:
   - http:
@@ -14,6 +16,8 @@ spec:
       - path: /
         pathType: Prefix
         backend:
-          serviceName: frontend
-          servicePort: 80
+          service:
+            name: frontend
+            port:
+              number: 80
 ---
