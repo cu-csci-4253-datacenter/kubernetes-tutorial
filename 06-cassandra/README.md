@@ -1,5 +1,7 @@
 # Installing Cassandra Using Helm
 
+Kubernetes simplifies deploying complex applications through a *package manager*. One of the most common package manages is Helm, which will demonstrate by deploying a complex application, [a multi-replica NoSQL database that is widely used](https://cassandra.apache.org/_/index.html).
+
 ## What is Helm?
 
 [Helm](https://helm.sh/) is a "package manager" for Kubernetes that simplifies the task of

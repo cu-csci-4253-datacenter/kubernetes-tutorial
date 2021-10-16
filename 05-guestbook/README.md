@@ -1,9 +1,7 @@
 # Example: Guestbook application on Kubernetes
 
-This directory contains the source code and Kubernetes manifests for Python
-Guestbook application from the Kubernetes distribution. Follow the tutorial at https://kubernetes.io/docs/tutorials/stateless-application/guestbook/.
-
-The differences in this version is that the `php-redis` application has been replaced with the `python-redis` application and that application implements a Flask web service.
+This directory contains the source code and Kubernetes manifests for a Python
+Guestbook application following the similar tutorial in [the Kubernetes distribution](https://kubernetes.io/docs/tutorials/stateless-application/guestbook/). The differences in this version is that the `php-redis` application has been replaced with the `python-redis` application and that application implements a Flask web service.
 
 This example solves some of the issues in the previous steps of our Kubernetes tutorial -- rather than use an application with a local database, the application is using a network database based on [Redis](https://redis.com/). In order to support load balancing you could set the Redis server to be a primary/secondary setup (that's what the Kubernetes tutorial does) but we just use a single Redis server.
 
@@ -14,7 +12,7 @@ The Kubernetes structures are:
 * Deployments for both the redis master and replica pods
 * Services for both the redis master and replica pods
 
-The redis servers are configured to find each other using DNS through the service mechanism.
+Services are used throughout so that simple DNS hostnames can be used to locate the appropriate pods (either the frontend or Redis).
 
 The Python application is built using [the Dockerfile in the `python-redis` directory](python-redis/Dockerfile). The application is slightly more complicated than the blog application from the Flask tutorial. It combines ["static pages"](python-redis/app/static) where Flask acts as a regular web server with ["templates"](python-redis/app/static) that are dynamically updated by the Flask program.
 
