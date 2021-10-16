@@ -15,8 +15,10 @@ kind: Ingress
 metadata:
   name: minimal-ingress
   namespace: default
+  annotations:
+    # use the shared ingress-nginx
+    kubernetes.io/ingress.class: "nginx"
 spec:
-  ingressClassName: nginx
   rules:
   - host: localhost
     http:
@@ -25,6 +27,6 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: flask-svc
+            name: blog-svc
             port:
               number: 9999
