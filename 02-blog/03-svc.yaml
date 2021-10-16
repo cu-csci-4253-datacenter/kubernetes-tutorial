@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: blog-svc
+spec:
+  selector:
+    app: blog
+  ports:
+  - name: blog
+    port: 9999
+    targetPort: 8888

@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  #
+  # This is the name that will appear in kubectl get po
+  #
+  name: curl
+  labels:
+    app: curl
+spec:
+  #
+  # The specification is a list of attributes, one of which
+  # is the list of containers
+  # 
+  containers:
+  - name: curl
+    image: dirkcgrunwald/blog:latest
+    #
+    # We're going to always pull the most recent version
+    # of this image in case we've changed it
+    #
+    imagePullPolicy: Always
+    args:
+      - /bin/sh
+      - -c
+      - |
+        while true;
+        do
+          curl http://blog-svc:9999
+          sleep 5;
+        done
+
+
+
+    
