@@ -62,3 +62,11 @@ and when you [visit your blog through the existing ingress](http://localhost), y
 In the [next step of our tutorial](../04-scalability/README.md) we'll see how to make our blog be "scalable" and reliable by using a `Deployment` of 3 blog servers. However, because we are using a `StorageClass` that only allows a single Pod to access our PV in read-write mode, the blog servers will be independent of each other and have different content.
 
 Then, in [step 5 of the tutorial](../05-guestbook/README.md) we'll show how to use a common database to share content across multiple applications.
+
+For now, delete the blog pod, the PV and PVC:
+```
+> kubectl delete pod/flask pv/blog-pv-volume pvc/blog-pv-claim
+pod "flask" deleted
+persistentvolume "blog-pv-volume" deleted
+persistentvolumeclaim "blog-pv-claim" deleted
+```
