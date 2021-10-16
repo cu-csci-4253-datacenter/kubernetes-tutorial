@@ -8,10 +8,18 @@ metadata:
   labels:
     app: blog
 spec:
-  #
-  # The specification is a list of attributes, one of which
-  # is the list of containers
-  # 
+##
+## The specifications below are how we tie persistent storage
+## to this blog. The volumes section specifies that we're going
+## to use the blog-pv-claim storage and that it will be known
+## within this Pod specification as blog-pv-storage. That storage
+## can be mounted by different containers within the pod, and there
+## you can create multiple volumes.
+##
+  volumes:
+    - name: blog-pv-storage
+      persistentVolumeClaim:
+        claimName: blog-pv-claim
   containers:
   - name: blog
     image: dirkcgrunwald/blog:latest
@@ -20,13 +28,15 @@ spec:
     env:
       - name: FLASK_PORT
         value: "8888"
+##
+## The following stanza states that the blog-pv-storage should
+## be mounted at /app/instance within the blog application.
+## That is where the database will be created or accessed.
+##
     volumeMounts:
       - mountPath: "/app/instance"
         name: blog-pv-storage
-  volumes:
-    - name: blog-pv-storage
-      persistentVolumeClaim:
-        claimName: blog-pv-claim
+
 
 
 
