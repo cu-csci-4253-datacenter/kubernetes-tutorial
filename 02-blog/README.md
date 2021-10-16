@@ -169,4 +169,4 @@ This typically requires more complex ingress definitions. For example, we might 
 
 ## Other ingress controllers
 
-There are [many ingress implementations])(https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/) that may be specific to a particular cloud vendor or that have different options, such as TLS-termination (so your blog doesn't need to handle `HTTPS` connections), authentication and other features.
+There are [many ingress implementations](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/) that may be specific to a particular cloud vendor or that have different options, such as TLS-termination (so your blog doesn't need to handle `HTTPS` connections), authentication and other features.
