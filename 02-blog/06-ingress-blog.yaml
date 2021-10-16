@@ -1,0 +1,44 @@
+#
+# See https://kubernetes.io/docs/concepts/services-networking/ingress/
+#
+# This example uses the kubernetes-ingress.
+# See https://github.com/nginxinc/kubernetes-ingress/blob/master/examples/complete-example/cafe-ingress.yaml
+# for a sample specification.
+#
+# Prior to using this, you must install the ingress controller software using ( e.g. )
+#   kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.0.4/deploy/static/provider/cloud/deploy.yaml
+# as shown at https://kubernetes.github.io/ingress-nginx/deploy/#docker-desktop
+#
+# 
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: minimal-ingress
+  namespace: default
+  annotations:
+    # use the shared ingress-nginx
+    kubernetes.io/ingress.class: "nginx"
+    #
+    # Specify that the target (which is sent to our flask server)
+    # removes the prefix (/blog/) because our flask server is not
+    # aware of this prefix & will throw a 404 error.
+    #
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+spec:
+  rules:
+  - host: localhost
+    http:
+      paths:
+      #
+      # Specify the path using a regular expression. The first regex handle
+      # the prefix (/blog or /blog/) while the second matches whatever
+      # comes after the prefix (e.g. it would match foo in /blog/foo).
+      # That second regex group is what is sent to the blog (see above)
+      #
+      - path: /blog(/|$)(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: blog-svc
+            port:
+              number: 9999
