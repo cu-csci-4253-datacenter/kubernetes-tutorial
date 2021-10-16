@@ -1,8 +1,4 @@
-FROM ubuntu:20.04
-
-RUN	DEBIAN_FRONTEND=noninteractive apt-get update -y && \
-	apt-get install -yq --no-install-recommends \
-	   git python3 python3-pip curl
+FROM python:3.8
 
 RUN  	cd /tmp && \
 	git clone https://github.com/pallets/flask && \
