@@ -83,7 +83,7 @@ pod/blog-env created
 Forwarding from 127.0.0.1:7777 -> 8888
 Forwarding from [::1]:7777 -> 8888
 ```
-If you then access `http://localhost:7777` in a browser window, you'll see the blog application.
+If you then access [http://localhost:7777](http://localhost:7777) in a browser window, you'll see the blog application.
 
 ## Accessing the blog via a service
 
@@ -95,7 +95,9 @@ spec:
   selector:
     app: blog
 ```
-The `app:blog` selector matches the `app:blog` label in [the blog pod definition](02-blog-env.yaml). We create the service and check that it's connecting to our blog:
+The `app:blog` selector matches the `app:blog` label in [the blog pod definition](02-blog-env.yaml), and `blog-svc` will forward requests to any pod with that specific label. This becomes important when we want to crate a reliable or scalable service with multiple web servers, which we do in [section 4 of the tutorial](../04-scalability).
+
+We create the service and check that it's connecting to our blog:
 ```
 > kubectl describe svc/blog-svc
 Name:              blog-svc
