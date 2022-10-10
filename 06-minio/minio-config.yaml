@@ -1,0 +1,52 @@
+mode: standalone
+
+## Set default rootUser, rootPassword
+## AccessKey and secretKey is generated when not set
+## Distributed MinIO ref: https://min.io/docs/minio/linux/operations/install-deploy-manage/deploy-minio-multi-node-multi-drive.html
+##
+auth:
+    rootUser: "rootuser"
+    rootPassword: "rootpass123"
+
+# Number of drives attached to a node
+drivesPerNode: 1
+# Number of MinIO containers running
+replicas: 1
+# Number of expanded MinIO clusters
+pools: 1
+
+## Enable persistence using Persistent Volume Claims
+## ref: http://kubernetes.io/docs/user-guide/persistent-volumes/
+##
+persistence:
+  enabled: false
+
+## Configure resource requests and limits
+## ref: http://kubernetes.io/docs/user-guide/compute-resources/
+##
+resources:
+  requests:
+    memory: 0.5Gi
+
+## List of users to be created after minio install
+##
+users:
+  ## Username, password and policy to be assigned to the user
+  ## Default policies are [readonly|readwrite|writeonly|consoleAdmin|diagnostics]
+  ## Add new policies as explained here https://min.io/docs/minio/kubernetes/upstream/administration/identity-access-management.html#access-management
+  ## NOTE: this will fail if LDAP is enabled in your MinIO deployment
+  ## make sure to disable this if you are using LDAP.
+  - accessKey: console
+    secretKey: console123
+    policy: consoleAdmin
+  # Or you can refer to specific secret
+  #- accessKey: externalSecret
+  #  existingSecret: my-secret
+  #  existingSecretKey: password
+  #  policy: readonly
+
+## List of buckets to be created after minio install
+##
+buckets:
+  - name: demucs
+    policy: public
