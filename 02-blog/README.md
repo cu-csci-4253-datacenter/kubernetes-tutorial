@@ -152,7 +152,7 @@ Although an ingress is a standard Kubernetes network component, the specific imp
 
 You must install the ingress controller software using ( e.g. )
 ```
-> kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.0.4/deploy/static/provider/cloud/deploy.yaml
+> kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.13.3/deploy/static/provider/cloud/deploy.yaml
 ```
 as shown at [the directions on deploying this for Docker Desktop](https://kubernetes.github.io/ingress-nginx/deploy/#docker-desktop). It takes a moment for the Ingress controller that you installed to actually be ready, so if the steps below don't work, wait a moment and try again.
 
