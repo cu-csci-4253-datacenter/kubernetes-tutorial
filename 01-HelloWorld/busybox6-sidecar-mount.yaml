@@ -10,7 +10,7 @@ spec:
   # In this example, we are going to create an "empty" volume
   # called varlog and then mount it on the two containers in the
   # pod. This will create a "shared" file area for the two, allowing
-  # the log file to be writte by one and consumed by the other
+  # the log file to be written by one and consumed by the other
   #
   volumes:
     - name: varlog
