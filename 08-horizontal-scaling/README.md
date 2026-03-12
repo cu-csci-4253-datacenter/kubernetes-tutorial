@@ -33,3 +33,9 @@ Steps:
 * _kubectl get hpa_
 * _kubectl get hpa php-apache --watch_
 * _kubectl run -i --tty load-generator --rm --image=busybox:latest --restart=Never -- /bin/sh -c "while sleep 0.001; do wget -q -O- http://php-apache; done"_
+
+## Big request
+The application/big-request.yaml defines a request that will likely fail on most machines (unless you have 200 cores). If you do
+* _kubectl apply -f application/big-request.yaml_
+* _kubectl get pods_
+You will see that pod is stuck in pending.
