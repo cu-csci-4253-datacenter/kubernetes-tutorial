@@ -38,4 +38,5 @@ Steps:
 The application/big-request.yaml defines a request that will likely fail on most machines (unless you have 200 cores). If you do
 * _kubectl apply -f application/big-request.yaml_
 * _kubectl get pods_
+* _kubectl describe pod/<POD Id>
 You will see that pod is stuck in pending.
