@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Pod
 metadata:
   #
-  # This is the name that will appear in kubectl get po
+  # This is the name that will appear in kubectl get pods
   #
   name: busybox1
   labels:
