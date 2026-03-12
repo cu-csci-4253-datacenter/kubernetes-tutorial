@@ -14,3 +14,10 @@ extremely lightweight linux image.
 * busybox4-multiline.yaml - Same thing again but with multiline yaml syntax.
 * busybox5-sidecar-broken.yaml - Creates a pod with two containers that incorrectly tries to share the same filesystem.
 * busybox6-sidecar-mount.yaml - Corrects the problem of the previous example by utilizing a shared volume. The volume utilizes an emptyDir, which is a temporary storage mechanism that can be shared between containers in the same pod. The volume is lost upon pod deletion.
+
+Some commands:
+* For busybox6:
+ * kubectl exec -it pod/busybox6 -c busybox -- sh
+ * kubectl exec -it pod/busybox6 -c muhlogs -- sh
+ * kubectl exec -it pod/busybox6 -c busybox -- top
+ * kubectl exec -it pod/busybox6 -c muhlogs -- top
