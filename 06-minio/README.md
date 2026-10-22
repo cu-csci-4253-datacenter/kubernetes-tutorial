@@ -1,6 +1,7 @@
 # Installing Minio Object Store Using Helm
 
-> [!WARNING] There is no longer support for minio. Probably best to use another S3-compatible solution like RustFS.
+> [!WARNING] 
+> There is no longer support for minio. Probably best to use another S3-compatible solution like RustFS.
 
 Kubernetes simplifies deploying complex applications through a *package manager*. One of the most common package manages is Helm, which we will demonstrate by deploying a complex application, [an open-source "object store" called Minio that is similar to S3](https://min.io/).
 
