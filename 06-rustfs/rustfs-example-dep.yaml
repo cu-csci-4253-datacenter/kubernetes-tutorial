@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rustfs-example
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rustfs-example
+  template:
+    metadata:
+      labels:
+        app: rustfs-example
+    spec:
+      containers:
+        - name: rustfs-example
+          # Build and push this image, then replace the value with its registry path.
+          image: YOUR_DOCKERHUB_USER/rustfs-example:latest
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: RUSTFS_ENDPOINT
+              value: "http://rustfs.rustfs-ns.svc.cluster.local:9000"
+            - name: AWS_ACCESS_KEY_ID
+              value: "rustfs-lab-user"
+            - name: AWS_SECRET_ACCESS_KEY
+              value: "replace-this-demo-secret"
+            - name: RUSTFS_BUCKET
+              value: "rustfs-demo-bucket"

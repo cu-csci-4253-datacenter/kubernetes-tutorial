@@ -44,14 +44,10 @@ kubectl describe pod -n rustfs-ns
 
 ## 3. Access the console and S3 API
 
-Use port forwarding rather than exposing the demo service publicly. Run each command in a separate terminal and leave it running:
+Use port forwarding rather than exposing the demo service publicly. Run the command in a separate terminal and leave it running:
 
 ```sh
-kubectl port-forward -n rustfs-ns svc/rustfs 9000:9000
-```
-
-```sh
-kubectl port-forward -n rustfs-ns svc/rustfs 9001:9001
+kubectl port-forward -n rustfs-ns svc/rustfs-svc 9000:9000 9001:9001
 ```
 
 Then open `http://localhost:9001` in a browser. Sign in with the access key and secret configured in `rustfs-config.yaml`:

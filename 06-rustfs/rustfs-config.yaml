@@ -1,0 +1,45 @@
+# Values for the official RustFS Helm chart.
+# This is a small single-pod configuration for a teaching/demo cluster,
+# not a highly available production deployment.
+fullnameOverride: rustfs
+
+mode:
+  distributed:
+    enabled: false
+  standalone:
+    enabled: true
+
+# Keep the console and S3 API internal to the cluster. Use kubectl port-forward
+# during the lab rather than exposing object storage publicly.
+ingress:
+  enabled: false
+
+gatewayApi:
+  enabled: false
+
+# Use a small persistent volume. The cluster must have a working StorageClass.
+storageclass:
+  name: standard # was local-path # Change to a StorageClass available in your cluster.
+  dataStorageSize: 1Gi
+  logStorageSize: 256Mi
+
+# Demo credentials only. Change these for any shared or exposed deployment.
+secret:
+  rustfs:
+    access_key: "rustfs-lab-user"
+    secret_key: "replace-this-demo-secret"
+
+service:
+  type: ClusterIP
+  endpoint:
+    port: 9000
+  console:
+    port: 9001
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 128Mi
+  limits:
+    cpu: 500m
+    memory: 512Mi
